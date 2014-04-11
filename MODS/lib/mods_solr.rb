@@ -4,6 +4,7 @@ class Mods::Record
   def to_solr
 
   # need to DRY multiple value fields (like genre)
+  # Also need to figure out how to base fields on attribute values (e.g. oaiset)
  
   %Q[<doc>
      <field name="title">#{self.title_info.title.text}</field>
