@@ -18,7 +18,7 @@ describe "read in a MODS record: " do
 
   context "given a MODS record" do
     it "should output a solr record" do
-      @mods_record.to_solr.gsub(/\s+/,"").should == test_solr_record.gsub(/\s+/,"")
+      expect(@mods_record.to_solr.gsub(/\s+/,"")).to eq test_solr_record.gsub(/\s+/,"")
     end
   end
 end
