@@ -58,7 +58,7 @@ def test_solr_record
    <field name="subject">protist</field>
    <field name="subject">soil</field>
    <field name="subject">auxin</field>
-     <field name="id">7af76c0f-61d6-4ebc-a2aa-79c125480269</field>
+     <field name="uuid">7af76c0f-61d6-4ebc-a2aa-79c125480269</field>
      <field name="format">application/pdf</field>
      <field name="rights">Permission is hereby granted to the University of Alberta Libraries to reproduce single copies of this thesis and to lend or sell such copies for private, scholarly or scientific research purposes only. Where the thesis is converted to, or otherwise made available in digital form, the University of Alberta will advise potential users of the thesis of these terms.
 The author reserves all other publication and other rights in association with the copyright in the thesis and, except as herein before provided, neither the thesis nor any substantial portion thereof may be printed or otherwise reproduced in any material form whatsoever without the author's prior written permission.</field>
