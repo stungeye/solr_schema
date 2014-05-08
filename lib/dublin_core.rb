@@ -2,48 +2,39 @@ require "nokogiri"
 
 class DublinCoreRecord
 
+  attr_reader :nodeset
+
   def initialize(data)
 
-    doc = Nokogiri::XML(data).remove_namespaces!
+    doc = Nokogiri::XML(data.gsub("\n", "")).remove_namespaces!.xpath("//metadata/dc").children
     create_record(doc)
 
   end
 
   def to_solr
-
-  %Q[<doc>
-     <field name="title">#{@title}</field>
-     <field name="creator">#{@creator}</field>
-     <field name="publisher">#{@publisher}</field>
-     <field name="type">#{@type}</field>
-     <field name="language">#{@language}</field>]+
-     subjects+
-     %Q[<field name="uuid">#{@uuid}</field>
-     <field name="format">#{@format}</field>
-     <field name="rights">#{@rights}</field>  
-   </doc>]
-
+    solr_record = "<doc>"
+  
+    @nodeset.each do |key,value|
+      solr_record += %Q[<field name="#{key}">#{value}</field>]
+    end
+ 
+    solr_record += "</doc>" 
   end
 
   private
 
   def create_record(document)
-    @title = document.xpath("//title").text
-    @creator = document.xpath("//creator").text
-    @publisher = document.xpath("//publisher").text
-    @type = document.xpath("//type").text
-    @language = document.xpath("//language").text
-    @subjects = document.xpath("//subject")
-    @uuid = document.xpath("//setSpec").text.gsub("uuid:", "")
-    @format = document.xpath("//format").text
-    @rights = document.xpath("//rights").text
-    #@nodeset = {}
-    #puts "create_record"
-    #puts document.class
-    #document.each do |node|
-    #  puts node
-    #  @nodeset[node.text.to_sym] = node.text
-    #end
+    @nodeset = {}
+    node_offset=0
+    document.each do |node|
+      if @nodeset.has_key? node.name.to_sym then 
+        node_offset+=1
+	@nodeset["#{node.name}_#{node_offset}".to_sym] = node.text unless node.text.blank?
+      else
+         node_offset=0
+         @nodeset[node.name.to_sym] = node.text
+      end
+    end
   end
 
   def subjects

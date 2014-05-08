@@ -45,23 +45,6 @@ The author reserves all other publication and other rights in association with t
 end
 
 def test_solr_record
-  %q[<doc>
-     <field name="title">The ecology of boreal forest floor microbial communities in relation to environmental factors</field>
-     <field name="creator">Swallow, Mathew J B</field>
-     <field name="publisher">University of Alberta</field>
-     <field name="type">Thesis</field>
-     <field name="language">eng</field>
-     <field name="subject">Boreal</field>
-   <field name="subject">Forest</field>
-   <field name="subject">bacteria</field>
-   <field name="subject">fungi</field>
-   <field name="subject">protist</field>
-   <field name="subject">soil</field>
-   <field name="subject">auxin</field>
-     <field name="uuid">7af76c0f-61d6-4ebc-a2aa-79c125480269</field>
-     <field name="format">application/pdf</field>
-     <field name="rights">Permission is hereby granted to the University of Alberta Libraries to reproduce single copies of this thesis and to lend or sell such copies for private, scholarly or scientific research purposes only. Where the thesis is converted to, or otherwise made available in digital form, the University of Alberta will advise potential users of the thesis of these terms.
-The author reserves all other publication and other rights in association with the copyright in the thesis and, except as herein before provided, neither the thesis nor any substantial portion thereof may be printed or otherwise reproduced in any material form whatsoever without the author's prior written permission.</field>
-     </doc>]
+  %q[<doc><fieldname="text"></field><fieldname="creator">Swallow,MathewJB</field><fieldname="format">application/pdf</field><fieldname="language">eng</field><fieldname="subject">Boreal</field><fieldname="subject_2">Forest</field><fieldname="subject_4">bacteria</field><fieldname="subject_6">fungi</field><fieldname="subject_8">protist</field><fieldname="subject_10">soil</field><fieldname="subject_12">auxin</field><fieldname="title">Theecologyofborealforestfloormicrobialcommunitiesinrelationtoenvironmentalfactors</field><fieldname="type">Thesis</field><fieldname="publisher">UniversityofAlberta</field><fieldname="rights">PermissionisherebygrantedtotheUniversityofAlbertaLibrariestoreproducesinglecopiesofthisthesisandtolendorsellsuchcopiesforprivate,scholarlyorscientificresearchpurposesonly.Wherethethesisisconvertedto,orotherwisemadeavailableindigitalform,theUniversityofAlbertawilladvisepotentialusersofthethesisoftheseterms.Theauthorreservesallotherpublicationandotherrightsinassociationwiththecopyrightinthethesisand,exceptashereinbeforeprovided,neitherthethesisnoranysubstantialportionthereofmaybeprintedorotherwisereproducedinanymaterialformwhatsoeverwithouttheauthor'spriorwrittenpermission.</field></doc>]
    end
 end
