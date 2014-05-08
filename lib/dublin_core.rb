@@ -1,5 +1,11 @@
 require "nokogiri"
 
+class String
+  def blank?
+    respond_to?(:empty?) ? empty? : !self
+  end
+end
+
 class DublinCoreRecord
 
   attr_reader :nodeset

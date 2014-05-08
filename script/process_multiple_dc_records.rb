@@ -1,12 +1,6 @@
 require "nokogiri"
 require_relative "../lib/dublin_core.rb"
 
-class String
-  def blank?
-    respond_to?(:empty?) ? empty? : !self
-  end
-end
-
 record_set = Nokogiri::XML(File.open(ARGV[0]).read.gsub("\n", "")).remove_namespaces!.xpath("//record")
 solr_record_set = []
 
