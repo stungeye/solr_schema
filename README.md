@@ -11,5 +11,13 @@ Blacklight can only handle MARC (binary and XML) natively. The best practice to 
 
 Further down the road, there may be a need for NAP/CSDGM, but YAGNI. 
 
-
 NB: There's a trick to indexing our SFX e-journal records: they don't have a 001 field, which is used by SolrMarc for the record id. The trick is to change the config/SolrMarc/index.properties file to use the 090a field as the id. 090a contains the SFX object id.
+
+Interface
+========
+
+When creating a record, pass a hash containing the raw data (String) and either the root of the XML document or the name of the metadata schema.
+
+e.g. record = Record.new({:raw => RawDataString, :schema => "dc"})
+     record = Record.new({:raw => RawDataString, :root_element => "//metadata/dc"})
+
