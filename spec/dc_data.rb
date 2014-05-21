@@ -1,6 +1,6 @@
 module DublinCoreData
 
-def test_data 
+def dc_test_data 
 %q[<?xml version="1.0" encoding="UTF-8"?>
 <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -44,7 +44,7 @@ The author reserves all other publication and other rights in association with t
 </OAI-PMH>]
 end
 
-def test_solr_record
+def test_dc_solr_record
   %q[<doc><fieldname="text"></field><fieldname="creator">Swallow,MathewJB</field><fieldname="format">application/pdf</field><fieldname="language">eng</field><fieldname="subject">Boreal</field><fieldname="subject_2">Forest</field><fieldname="subject_4">bacteria</field><fieldname="subject_6">fungi</field><fieldname="subject_8">protist</field><fieldname="subject_10">soil</field><fieldname="subject_12">auxin</field><fieldname="title">Theecologyofborealforestfloormicrobialcommunitiesinrelationtoenvironmentalfactors</field><fieldname="type">Thesis</field><fieldname="publisher">UniversityofAlberta</field><fieldname="rights">PermissionisherebygrantedtotheUniversityofAlbertaLibrariestoreproducesinglecopiesofthisthesisandtolendorsellsuchcopiesforprivate,scholarlyorscientificresearchpurposesonly.Wherethethesisisconvertedto,orotherwisemadeavailableindigitalform,theUniversityofAlbertawilladvisepotentialusersofthethesisoftheseterms.Theauthorreservesallotherpublicationandotherrightsinassociationwiththecopyrightinthethesisand,exceptashereinbeforeprovided,neitherthethesisnoranysubstantialportionthereofmaybeprintedorotherwisereproducedinanymaterialformwhatsoeverwithouttheauthor'spriorwrittenpermission.</field></doc>]
    end
 end

@@ -1,18 +1,20 @@
 require "nokogiri"
 
-#class String
-#  def blank?
-#    respond_to?(:empty?) ? empty? : !self
-#  end
-#end
-
-class DublinCoreRecord
+class Record
 
   attr_reader :nodeset
 
   def initialize(data)
 
-    doc = Nokogiri::XML(data.gsub("\n", "")).remove_namespaces!.xpath("//metadata/dc").children
+    if data[:schema] == "dc" then
+      @root = "//metadata/dc"
+    elsif data[:schema] == "mods" then
+      @root = "//mods" 
+    else
+      @root = data[:root_element]
+    end
+
+    doc = Nokogiri::XML(data[:raw].gsub("\n", "")).remove_namespaces!.xpath(@root).children
     create_record(doc)
 
   end
@@ -35,7 +37,7 @@ class DublinCoreRecord
     document.each do |node|
       if @nodeset.has_key? node.name.to_sym then 
         node_offset+=1
-	@nodeset["#{node.name}_#{node_offset}".to_sym] = node.text unless node.text.blank?
+	@nodeset["#{node.name}_#{node_offset}".to_sym] = node.text unless node.blank?
       else
          node_offset=0
          @nodeset[node.name.to_sym] = node.text
@@ -43,11 +45,4 @@ class DublinCoreRecord
     end
   end
 
-  def subjects
-     subjects = ""
-     @subjects.each do |subject|
-      subjects += %Q[<field name="subject">#{subject.text}</field>]
-     end
-     subjects
-   end
 end

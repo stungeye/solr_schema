@@ -1,3 +1,4 @@
-require "../lib/mods.rb"
-require "../lib/dublin_core.rb"
+require "../lib/data_processing.rb"
+require "./dc_data.rb"
+require "./mods_data.rb"
 
