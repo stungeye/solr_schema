@@ -21,3 +21,5 @@ When creating a record, pass a hash containing the raw data (String) and either 
 e.g. record = Record.new({:raw => RawDataString, :schema => "dc"})
      record = Record.new({:raw => RawDataString, :root_element => "//metadata/dc"})
 
+To access the solr xml representation, call record.to_solr
+
