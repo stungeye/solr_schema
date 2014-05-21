@@ -1,11 +1,11 @@
 require "nokogiri"
-require_relative "../lib/dublin_core.rb"
+require_relative "../lib/data_processing.rb"
 
 record_set = Nokogiri::XML(File.open(ARGV[0]).read.gsub("\n", "")).remove_namespaces!.xpath("//record")
 solr_record_set = []
 
 record_set.each do |record|
-  solr_record_set << DublinCoreRecord.new(record.to_xml)
+  solr_record_set << Record.new({:raw=>record.to_xml, :schema=>"dc"})
 end
 
 File.open("solr.xml", "w"){|f|

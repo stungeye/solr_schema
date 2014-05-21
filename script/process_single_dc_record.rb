@@ -1,4 +1,4 @@
-require_relative "../lib/dublin_core.rb"
+require_relative "../lib/data_processing.rb"
 
-dc = DublinCoreRecord.new(File.open(ARGV[0]).read)
+dc = Record.new({:raw => File.open(ARGV[0]).read, :schema=>"dc"})
 puts dc.to_solr
