@@ -1,4 +1,4 @@
-require "../lib/data_processing.rb"
+require "../lib/solr_schema.rb"
 require "./dc_data.rb"
 require "./mods_data.rb"
 
