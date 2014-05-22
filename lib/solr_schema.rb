@@ -15,19 +15,20 @@ class Record
     end
     
     @raw_data = data[:raw]
-
-    create_record(nokogiri_document(@raw_data, @root_element))
-
   end
 
   def to_solr
     solr_record = "<doc>"
   
-    @nodeset.each do |key,value|
+    nodeset.each do |key,value|
       solr_record += xml_field_from(key, value)
     end
  
     solr_record += "</doc>" 
+  end
+  
+  def nodeset
+    @nodeset ||= create_record(nokogiri_document(@raw_data, @root_element))
   end
 
   private
@@ -46,6 +47,7 @@ class Record
     document.each do |node|
       add_to_nodeset(node)
     end
+    @nodeset
   end
 
   def add_to_nodeset(node)
@@ -57,7 +59,7 @@ class Record
   end
 
   def node_already_present?(node_name)
-    @nodeset.has_key? node_name
+    nodeset.has_key? node_name
   end
 
   # these two methods still need DRY
