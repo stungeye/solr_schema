@@ -21,5 +21,12 @@ describe "read in dublin core record" do
       expect(@mods_record.to_solr.gsub(/\s+/,"")).to eq ModsData::test_mods_solr_record.gsub(/\s+/,"")
    end
   end
+  
+  context "given a root element record" do
+    it "should output a solr record" do
+      root_element_record = Record.new({:raw => DublinCoreData::dc_test_data, :root_element => "//metadata/dc"})
+      expect(root_element_record.to_solr.gsub(/\s+/,"")).to eq DublinCoreData::test_dc_solr_record.gsub(/\s+/,"")
+   end
+  end
 
 end
