@@ -2,7 +2,7 @@ require "nokogiri"
 
 class Record
 
-  attr_reader :nodeset
+  attr_reader :nodeset # nodeset getter is never accessed from the specs. Is it required?
 
   def initialize(data)
 
@@ -13,8 +13,10 @@ class Record
     else
       @root_element = data[:root_element]
     end
+    
+    @raw_data = data[:raw]
 
-    create_record(nokogiri_document(data[:raw], @root_element))
+    create_record(nokogiri_document(@raw_data, @root_element))
 
   end
 
